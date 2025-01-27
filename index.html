@@ -18,6 +18,9 @@
             text-align: center;
             padding: 20px;
         }
+        header h1 {
+            margin: 0;
+        }
         .container {
             max-width: 900px;
             margin: 20px auto;
@@ -173,6 +176,66 @@
         <div class="nav-buttons">
             <button onclick="showModule('module1-3')">Previous</button>
             <button onclick="showModule('module2-1')">Next Module</button>
+        </div>
+    </div>
+
+    <!-- Module 2: Video Calling -->
+    <div id="module2-1" class="container hidden">
+        <h2>Module 2: Video Calling - Introduction</h2>
+        <p><strong>Purpose:</strong> Learn how to use video calling tools to connect with friends, family, and professionals.</p>
+        <p>Video calling is an essential way to stay connected in today’s digital age. You’ll learn to install apps, set up accounts, and participate in calls effectively.</p>
+        <div class="nav-buttons">
+            <button onclick="showModule('home')">Home</button>
+            <button onclick="showModule('module2-2')">Next</button>
+        </div>
+    </div>
+
+    <div id="module2-2" class="container hidden">
+        <h2>Module 2: Installing and Setting Up Video Apps</h2>
+        <div class="instruction">
+            <strong>Step 1:</strong> Download an app like Zoom or Skype from the app store.
+        </div>
+        <div class="instruction">
+            <strong>Step 2:</strong> Open the app and click “Sign Up” to create an account.
+        </div>
+        <div class="instruction">
+            <strong>Step 3:</strong> Set up your profile with your name and email.
+        </div>
+        <div class="instruction">
+            <strong>Why It Matters:</strong> These tools enable real-time communication for personal and professional needs.
+        </div>
+        <div class="nav-buttons">
+            <button onclick="showModule('module2-1')">Previous</button>
+            <button onclick="showModule('module2-3')">Next</button>
+        </div>
+    </div>
+
+    <div id="module2-3" class="container hidden">
+        <h2>Module 2: Practice Activity</h2>
+        <p>Simulate joining a video call:</p>
+        <div class="instruction">
+            <strong>Scenario:</strong> Click below to join a sample meeting.
+        </div>
+        <button onclick="alert('You have joined the call successfully!')">Join Meeting</button>
+        <div class="nav-buttons">
+            <button onclick="showModule('module2-2')">Previous</button>
+            <button onclick="showModule('module2-quiz')">Next</button>
+        </div>
+    </div>
+
+    <div id="module2-quiz" class="container hidden">
+        <h2>Module 2: Quiz</h2>
+        <p>What’s the first step to set up a video calling app?</p>
+        <div class="quiz-question">
+            <ul class="quiz-options">
+                <li><button onclick="alert('Incorrect! You need to download the app first.')">Create an account</button></li>
+                <li><button onclick="alert('Correct! You need to download the app.')">Download the app</button></li>
+                <li><button onclick="alert('Incorrect! Installing happens after downloading.')">Install the app</button></li>
+            </ul>
+        </div>
+        <div class="nav-buttons">
+            <button onclick="showModule('module2-3')">Previous</button>
+            <button onclick="showModule('module3-1')">Next Module</button>
         </div>
     </div>
 
