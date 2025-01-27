@@ -74,6 +74,23 @@
         .progress {
             font-weight: bold;
         }
+        .instruction {
+            margin: 15px 0;
+            padding: 15px;
+            background-color: #f0f4ff;
+            border-left: 5px solid #5a67d8;
+            border-radius: 5px;
+        }
+        .quiz-question {
+            margin: 20px 0;
+        }
+        .quiz-options {
+            list-style: none;
+            padding: 0;
+        }
+        .quiz-options li {
+            margin: 10px 0;
+        }
     </style>
 </head>
 <body>
@@ -109,42 +126,70 @@
         </ul>
     </div>
 
-    <!-- Module Placeholder Content -->
+    <!-- Module 1: Online Banking -->
     <div id="module1-1" class="container hidden">
         <h2>Module 1: Online Banking - Introduction</h2>
         <p>Learn to manage personal finances securely and efficiently.</p>
+        <div class="instruction">
+            <strong>Why Online Banking?</strong> Online banking allows you to save time and manage finances from the comfort of your home.
+        </div>
         <div class="nav-buttons">
             <button onclick="showHome()">Home</button>
+            <button onclick="startModule('module1-2')">Next</button>
+        </div>
+    </div>
+    <div id="module1-2" class="container hidden">
+        <h2>Module 1: How to Set Up Online Banking</h2>
+        <div class="instruction">
+            <strong>Step 1:</strong> Visit your bank's website or download their app.
+        </div>
+        <div class="instruction">
+            <strong>Step 2:</strong> Register by providing your account details.
+        </div>
+        <div class="instruction">
+            <strong>Step 3:</strong> Create a secure password and follow the on-screen instructions.
+        </div>
+        <div class="nav-buttons">
+            <button onclick="startModule('module1-1')">Previous</button>
+            <button onclick="startModule('module1-quiz')">Quiz</button>
+        </div>
+    </div>
+    <div id="module1-quiz" class="container hidden">
+        <h2>Module 1: Quiz</h2>
+        <div class="quiz-question">
+            <p>What is the first step to setting up online banking?</p>
+            <ul class="quiz-options">
+                <li><button onclick="alert('Incorrect! Start by visiting the bank website.')">Create a password</button></li>
+                <li><button onclick="alert('Correct! Visit the bank website or download their app.')">Visit the bank website</button></li>
+            </ul>
+        </div>
+        <div class="quiz-question">
+            <p>Why is a secure password important?</p>
+            <ul class="quiz-options">
+                <li><button onclick="alert('Correct! It helps protect your account.')">To protect your account</button></li>
+                <li><button onclick="alert('Incorrect! It is not just about following rules.')">To follow rules</button></li>
+            </ul>
+        </div>
+        <div class="nav-buttons">
+            <button onclick="startModule('module1-2')">Previous</button>
             <button onclick="completeModule('module1', 'module2')">Complete Module</button>
         </div>
     </div>
 
+    <!-- Module 2: Video Calling -->
     <div id="module2-1" class="container hidden">
         <h2>Module 2: Video Calling - Introduction</h2>
         <p>Learn to connect with friends, family, and professionals through video calls.</p>
+        <div class="instruction">
+            <strong>Why Video Calling?</strong> Stay connected with loved ones and participate in virtual meetings with ease.
+        </div>
         <div class="nav-buttons">
             <button onclick="showHome()">Home</button>
-            <button onclick="completeModule('module2', 'module3')">Complete Module</button>
+            <button onclick="startModule('module2-2')">Next</button>
         </div>
     </div>
 
-    <div id="module3-1" class="container hidden">
-        <h2>Module 3: Social Media - Introduction</h2>
-        <p>Discover how to safely engage and connect on social media platforms.</p>
-        <div class="nav-buttons">
-            <button onclick="showHome()">Home</button>
-            <button onclick="completeModule('module3', 'module4')">Complete Module</button>
-        </div>
-    </div>
-
-    <div id="module4-1" class="container hidden">
-        <h2>Module 4: Cybersecurity - Introduction</h2>
-        <p>Learn essential cybersecurity practices to protect yourself online.</p>
-        <div class="nav-buttons">
-            <button onclick="showHome()">Home</button>
-            <button onclick="completeCourse()">Complete Module</button>
-        </div>
-    </div>
+    <!-- Additional Modules and Content Continue... -->
 
     <!-- JavaScript for Navigation and Module Management -->
     <script>
