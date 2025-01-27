@@ -229,8 +229,17 @@
         function startModule(moduleId) {
             console.log("Starting module:", moduleId);
             const modules = document.querySelectorAll('.container');
-            modules.forEach(module => module.classList.add('hidden'));
-            document.getElementById(moduleId).classList.remove('hidden');
+            modules.forEach(module => {
+                module.classList.add('hidden');
+                console.log("Hiding module:", module.id);
+            });
+            const targetModule = document.getElementById(moduleId);
+            if (targetModule) {
+                targetModule.classList.remove('hidden');
+                console.log("Showing module:", moduleId);
+            } else {
+                console.error("Module not found:", moduleId);
+            }
         }
 
         function showHome() {
