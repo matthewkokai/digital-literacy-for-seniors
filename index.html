@@ -227,18 +227,13 @@
         };
 
         function startModule(moduleId) {
-            console.log("Starting module:", moduleId);
             const modules = document.querySelectorAll('.container');
-            modules.forEach(module => {
-                module.classList.add('hidden');
-                console.log("Hiding module:", module.id);
-            });
+            modules.forEach(module => module.classList.add('hidden'));
             const targetModule = document.getElementById(moduleId);
             if (targetModule) {
                 targetModule.classList.remove('hidden');
-                console.log("Showing module:", moduleId);
             } else {
-                console.error("Module not found:", moduleId);
+                alert('Error: Module content not found.');
             }
         }
 
