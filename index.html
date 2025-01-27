@@ -227,6 +227,7 @@
         };
 
         function startModule(moduleId) {
+            console.log("Starting module:", moduleId);
             const modules = document.querySelectorAll('.container');
             modules.forEach(module => module.classList.add('hidden'));
             document.getElementById(moduleId).classList.remove('hidden');
