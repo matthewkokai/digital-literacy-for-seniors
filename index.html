@@ -47,52 +47,32 @@
             cursor: pointer;
             margin: 10px;
         }
-        .nav-buttons button:hover {
+        .nav-buttons button:disabled {
+            background-color: #ddd;
+            color: #aaa;
+            cursor: not-allowed;
+        }
+        .nav-buttons button:hover:enabled {
             background-color: #434dcb;
         }
         .hidden {
             display: none;
         }
-        .instruction {
-            margin: 15px 0;
-            padding: 15px;
-            background-color: #f0f4ff;
-            border-left: 5px solid #5a67d8;
-            border-radius: 5px;
-        }
-        .home {
-            text-align: center;
-        }
-        .home button {
-            background-color: #5a67d8;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            margin-top: 20px;
-        }
-        .home button:hover {
-            background-color: #434dcb;
-        }
-        .quiz-question {
-            margin: 20px 0;
-        }
-        .quiz-options {
+        .module-list {
             list-style: none;
             padding: 0;
         }
-        .quiz-options li {
+        .module-list li {
             margin: 10px 0;
-        }
-        .completion {
-            text-align: center;
-        }
-        .completion input {
             padding: 10px;
-            font-size: 1rem;
-            margin: 10px 0;
+            background-color: #e2e8f0;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .progress {
+            font-weight: bold;
         }
     </style>
 </head>
@@ -104,184 +84,107 @@
     <!-- Home Screen -->
     <div id="home" class="container">
         <h2>Welcome to the Digital Literacy Course</h2>
-        <p>This course is designed to help seniors master essential digital skills, including:</p>
-        <ul>
-            <li>Online Banking</li>
-            <li>Video Calling</li>
-            <li>Social Media</li>
-            <li>Cybersecurity</li>
+        <p>Progress through each module to master essential digital skills. You must achieve 100% on quizzes and activities to unlock the next module.</p>
+        <ul class="module-list">
+            <li>
+                <span>Module 1: Online Banking</span>
+                <button id="start-module1" onclick="startModule('module1-1')">Start</button>
+                <span class="progress" id="progress-module1">0%</span>
+            </li>
+            <li>
+                <span>Module 2: Video Calling</span>
+                <button id="start-module2" onclick="startModule('module2-1')" disabled>Locked</button>
+                <span class="progress" id="progress-module2">Locked</span>
+            </li>
+            <li>
+                <span>Module 3: Social Media</span>
+                <button id="start-module3" onclick="startModule('module3-1')" disabled>Locked</button>
+                <span class="progress" id="progress-module3">Locked</span>
+            </li>
+            <li>
+                <span>Module 4: Cybersecurity</span>
+                <button id="start-module4" onclick="startModule('module4-1')" disabled>Locked</button>
+                <span class="progress" id="progress-module4">Locked</span>
+            </li>
         </ul>
-        <div class="home">
-            <button onclick="showModule('module1-1')">Start Course</button>
+    </div>
+
+    <!-- Module Placeholder Content -->
+    <div id="module1-1" class="container hidden">
+        <h2>Module 1: Online Banking - Introduction</h2>
+        <p>Learn to manage personal finances securely and efficiently.</p>
+        <div class="nav-buttons">
+            <button onclick="showHome()">Home</button>
+            <button onclick="completeModule('module1', 'module2')">Complete Module</button>
         </div>
     </div>
 
-    <!-- Module 3: Social Media Use -->
+    <div id="module2-1" class="container hidden">
+        <h2>Module 2: Video Calling - Introduction</h2>
+        <p>Learn to connect with friends, family, and professionals through video calls.</p>
+        <div class="nav-buttons">
+            <button onclick="showHome()">Home</button>
+            <button onclick="completeModule('module2', 'module3')">Complete Module</button>
+        </div>
+    </div>
+
     <div id="module3-1" class="container hidden">
-        <h2>Module 3: Social Media Use - Introduction</h2>
-        <p><strong>Purpose:</strong> Learn how to safely and effectively engage with social media platforms.</p>
-        <p>Social media allows you to connect with friends and family, join communities, and stay informed. This module will teach you the basics of using social media safely.</p>
+        <h2>Module 3: Social Media - Introduction</h2>
+        <p>Discover how to safely engage and connect on social media platforms.</p>
         <div class="nav-buttons">
-            <button onclick="showModule('home')">Home</button>
-            <button onclick="showModule('module3-2')">Next</button>
+            <button onclick="showHome()">Home</button>
+            <button onclick="completeModule('module3', 'module4')">Complete Module</button>
         </div>
     </div>
 
-    <div id="module3-2" class="container hidden">
-        <h2>Module 3: Setting Up a Social Media Account</h2>
-        <div class="instruction">
-            <strong>Step 1:</strong> Choose a platform, such as Facebook or Instagram.
-        </div>
-        <div class="instruction">
-            <strong>Step 2:</strong> Visit the platform’s website or download its app.
-        </div>
-        <div class="instruction">
-            <strong>Step 3:</strong> Fill out the registration form with your name, email, and a secure password.
-        </div>
-        <div class="instruction">
-            <strong>Why It Matters:</strong> Social media accounts allow you to safely engage with content and connect with others.
-        </div>
-        <div class="nav-buttons">
-            <button onclick="showModule('module3-1')">Previous</button>
-            <button onclick="showModule('module3-3')">Next</button>
-        </div>
-    </div>
-
-    <div id="module3-3" class="container hidden">
-        <h2>Module 3: Practice Activity</h2>
-        <p>Practice creating a sample social media post:</p>
-        <div class="instruction">
-            <strong>Scenario:</strong> Type a message to share with your friends.</p>
-        </div>
-        <div>
-            <textarea placeholder="Write your post here..." rows="4" cols="50"></textarea>
-            <button onclick="alert('Your post has been shared successfully!')">Post</button>
-        </div>
-        <div class="nav-buttons">
-            <button onclick="showModule('module3-2')">Previous</button>
-            <button onclick="showModule('module3-quiz')">Next</button>
-        </div>
-    </div>
-
-    <div id="module3-quiz" class="container hidden">
-        <h2>Module 3: Quiz</h2>
-        <p>Which of the following is important for a secure social media account?</p>
-        <div class="quiz-question">
-            <ul class="quiz-options">
-                <li><button onclick="alert('Correct! A strong password is essential.')">Using a strong password</button></li>
-                <li><button onclick="alert('Incorrect! Sharing your password is unsafe.')">Sharing your password with friends</button></li>
-                <li><button onclick="alert('Incorrect! Passwords should not be simple or predictable.')">Using your pet’s name as the password</button></li>
-            </ul>
-        </div>
-        <div class="quiz-question">
-            <p>How can you adjust privacy settings?</p>
-            <ul class="quiz-options">
-                <li><button onclick="alert('Correct! Privacy settings are in the account settings menu.')">Go to account settings</button></li>
-                <li><button onclick="alert('Incorrect! Posting your preferences does not affect privacy.')">Post your preferences publicly</button></li>
-                <li><button onclick="alert('Incorrect! Your email settings are unrelated to social media privacy.')">Change your email preferences</button></li>
-            </ul>
-        </div>
-        <div class="nav-buttons">
-            <button onclick="showModule('module3-3')">Previous</button>
-            <button onclick="showModule('module4-1')">Next Module</button>
-        </div>
-    </div>
-
-    <!-- Module 4: Cybersecurity Basics -->
     <div id="module4-1" class="container hidden">
-        <h2>Module 4: Cybersecurity Basics - Introduction</h2>
-        <p><strong>Purpose:</strong> Protect yourself online by identifying threats and adopting secure practices.</p>
-        <p>Cybersecurity is crucial for keeping your information safe. This module will teach you how to identify risks and implement security measures.</p>
+        <h2>Module 4: Cybersecurity - Introduction</h2>
+        <p>Learn essential cybersecurity practices to protect yourself online.</p>
         <div class="nav-buttons">
-            <button onclick="showModule('home')">Home</button>
-            <button onclick="showModule('module4-2')">Next</button>
+            <button onclick="showHome()">Home</button>
+            <button onclick="completeCourse()">Complete Module</button>
         </div>
     </div>
 
-    <div id="module4-2" class="container hidden">
-        <h2>Module 4: Identifying Online Threats</h2>
-        <div class="instruction">
-            <strong>Step 1:</strong> Be cautious of emails asking for personal information.
-        </div>
-        <div class="instruction">
-            <strong>Step 2:</strong> Avoid clicking on suspicious links.
-        </div>
-        <div class="instruction">
-            <strong>Step 3:</strong> Use antivirus software to protect your device.
-        </div>
-        <div class="instruction">
-            <strong>Why It Matters:</strong> Recognizing threats can prevent identity theft and data breaches.
-        </div>
-        <div class="nav-buttons">
-            <button onclick="showModule('module4-1')">Previous</button>
-            <button onclick="showModule('module4-3')">Next</button>
-        </div>
-    </div>
-
-    <div id="module4-3" class="container hidden">
-        <h2>Module 4: Practice Activity</h2>
-        <p>Identify the phishing email:</p>
-        <div class="instruction">
-            <strong>Scenario:</strong> You receive an email claiming to be from your bank, asking for your password. What should you do?</p>
-        </div>
-        <button onclick="alert('Correct! You should delete the email and not click on any links.')">Delete the email</button>
-        <button onclick="alert('Incorrect! Entering your password would compromise your account.')">Enter your password</button>
-        <div class="nav-buttons">
-            <button onclick="showModule('module4-2')">Previous</button>
-            <button onclick="showModule('module4-quiz')">Next</button>
-        </div>
-    </div>
-
-    <div id="module4-quiz" class="container hidden">
-        <h2>Module 4: Quiz</h2>
-        <p>Which of the following is a secure practice?</p>
-        <div class="quiz-question">
-            <ul class="quiz-options">
-                <li><button onclick="alert('Correct! Two-factor authentication adds an extra layer of security.')">Enable two-factor authentication</button></li>
-                <li><button onclick="alert('Incorrect! Sharing your password is unsafe.')">Share your password with family</button></li>
-                <li><button onclick="alert('Incorrect! Public Wi-Fi without a VPN is not secure.')">Use public Wi-Fi without precautions</button></li>
-            </ul>
-        </div>
-        <div class="quiz-question">
-            <p>How can you verify an email is legitimate?</p>
-            <ul class="quiz-options">
-                <li><button onclick="alert('Correct! Contacting the company directly ensures authenticity.')">Contact the company directly</button></li>
-                <li><button onclick="alert('Incorrect! Clicking links in suspicious emails can lead to phishing.')">Click the link to verify</button></li>
-                <li><button onclick="alert('Incorrect! Legitimate emails don’t ask for passwords directly.')">Enter the requested information</button></li>
-            </ul>
-        </div>
-        <div class="nav-buttons">
-            <button onclick="showModule('module4-3')">Previous</button>
-            <button onclick="showModule('completion')">Finish</button>
-        </div>
-    </div>
-
-    <!-- Completion Screen -->
-    <div id="completion" class="container hidden">
-        <h2>Congratulations!</h2>
-        <p>You’ve completed the Digital Literacy Course!</p>
-        <p>Enter your name below to generate your completion certificate:</p>
-        <div class="completion">
-            <input type="text" id="name" placeholder="Your Name">
-            <button onclick="generateCertificate()">Download Certificate</button>
-        </div>
-    </div>
-
+    <!-- JavaScript for Navigation and Module Management -->
     <script>
-        function showModule(moduleId) {
+        let moduleProgress = {
+            module1: 0,
+            module2: 0,
+            module3: 0,
+            module4: 0
+        };
+
+        function startModule(moduleId) {
             const modules = document.querySelectorAll('.container');
             modules.forEach(module => module.classList.add('hidden'));
-            const selectedModule = document.getElementById(moduleId);
-            selectedModule.classList.remove('hidden');
+            document.getElementById(moduleId).classList.remove('hidden');
         }
 
-        function generateCertificate() {
-            const name = document.getElementById('name').value;
-            if (name) {
-                alert(`Congratulations, ${name}! Your certificate is being generated.`);
-            } else {
-                alert('Please enter your name.');
+        function showHome() {
+            const modules = document.querySelectorAll('.container');
+            modules.forEach(module => module.classList.add('hidden'));
+            document.getElementById('home').classList.remove('hidden');
+        }
+
+        function completeModule(currentModule, nextModule) {
+            moduleProgress[currentModule] = 100;
+            document.getElementById(`progress-${currentModule}`).textContent = '100%';
+
+            if (nextModule) {
+                document.getElementById(`start-${nextModule}`).disabled = false;
+                document.getElementById(`progress-${nextModule}`).textContent = '0%';
             }
+
+            alert(`${currentModule.replace('module', 'Module ')} completed!`);
+            showHome();
+        }
+
+        function completeCourse() {
+            moduleProgress.module4 = 100;
+            document.getElementById('progress-module4').textContent = '100%';
+            alert('Congratulations! You have completed the entire course!');
+            showHome();
         }
     </script>
 </body>
