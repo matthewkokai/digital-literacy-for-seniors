@@ -72,6 +72,24 @@
         .home button:hover {
             background-color: #434dcb;
         }
+        .quiz-question {
+            margin: 20px 0;
+        }
+        .quiz-options {
+            list-style: none;
+            padding: 0;
+        }
+        .quiz-options li {
+            margin: 10px 0;
+        }
+        .completion {
+            text-align: center;
+        }
+        .completion input {
+            padding: 10px;
+            font-size: 1rem;
+            margin: 10px 0;
+        }
     </style>
 </head>
 <body>
@@ -98,7 +116,7 @@
     <div id="module1-1" class="container hidden">
         <h2>Module 1: Online Banking - Introduction</h2>
         <p><strong>Purpose:</strong> Learn to manage personal finances securely and efficiently.</p>
-        <p>This module will guide you through setting up an account, navigating your bank’s website, and completing basic tasks like checking balances and paying bills.</p>
+        <p>Online banking allows you to manage your finances from the comfort of your home. It’s secure, convenient, and saves time. You’ll learn to set up an account, log in, and perform basic tasks.</p>
         <div class="nav-buttons">
             <button onclick="showModule('home')">Home</button>
             <button onclick="showModule('module1-2')">Next</button>
@@ -106,15 +124,18 @@
     </div>
 
     <div id="module1-2" class="container hidden">
-        <h2>Module 1: Setting Up Your Account</h2>
+        <h2>Module 1: How to Set Up an Online Banking Account</h2>
         <div class="instruction">
-            <strong>Step 1:</strong> Open your web browser and navigate to your bank's website.
+            <strong>Step 1:</strong> Visit your bank's website or download its mobile app.
         </div>
         <div class="instruction">
-            <strong>Step 2:</strong> Locate the "Sign In" or "Log In" button and click it.
+            <strong>Step 2:</strong> Locate the “Sign Up” or “Register” button.
         </div>
         <div class="instruction">
-            <strong>Step 3:</strong> Enter your username and password. If you don’t have an account, click on "Create Account" and follow the steps to register.
+            <strong>Step 3:</strong> Fill out the form with your personal details, such as your name, account number, and a secure password.
+        </div>
+        <div class="instruction">
+            <strong>Why It Matters:</strong> Registering ensures your account is protected, and you can access it anytime securely.
         </div>
         <div class="nav-buttons">
             <button onclick="showModule('module1-1')">Previous</button>
@@ -124,62 +145,63 @@
 
     <div id="module1-3" class="container hidden">
         <h2>Module 1: Practice Activity</h2>
+        <p>Simulate logging into a mock online banking platform:</p>
         <div class="instruction">
-            <strong>Practice Activity:</strong> Click the button below to simulate logging into a mock banking interface.
+            <strong>Scenario:</strong> Imagine you need to check your balance. Type your username and password below to log in.</p>
+        </div>
+        <div>
+            <input type="text" placeholder="Username">
+            <input type="password" placeholder="Password">
+            <button onclick="alert('Logged in successfully!')">Log In</button>
         </div>
         <div class="nav-buttons">
             <button onclick="showModule('module1-2')">Previous</button>
+            <button onclick="showModule('module1-quiz')">Next</button>
+        </div>
+    </div>
+
+    <div id="module1-quiz" class="container hidden">
+        <h2>Module 1: Quiz</h2>
+        <p>What’s the first step to set up online banking?</p>
+        <div class="quiz-question">
+            <ul class="quiz-options">
+                <li><button onclick="alert('Incorrect! Visit your bank’s website first.')">Call the bank</button></li>
+                <li><button onclick="alert('Correct! Visit your bank’s website to begin.')">Visit your bank’s website</button></li>
+                <li><button onclick="alert('Incorrect! You need to register online first.')">Log in with your credentials</button></li>
+            </ul>
+        </div>
+        <div class="nav-buttons">
+            <button onclick="showModule('module1-3')">Previous</button>
             <button onclick="showModule('module2-1')">Next Module</button>
         </div>
     </div>
 
-    <!-- Module 2: Video Calling -->
-    <div id="module2-1" class="container hidden">
-        <h2>Module 2: Video Calling - Introduction</h2>
-        <p><strong>Purpose:</strong> Connect with family, friends, and professionals through video calls.</p>
-        <p>This module will guide you through installing a video calling app, creating an account, and practicing key features like joining and hosting meetings.</p>
-        <div class="nav-buttons">
-            <button onclick="showModule('home')">Home</button>
-            <button onclick="showModule('module2-2')">Next</button>
+    <!-- Completion Screen -->
+    <div id="completion" class="container hidden">
+        <h2>Congratulations!</h2>
+        <p>You’ve completed the Digital Literacy Course!</p>
+        <p>Enter your name below to generate your completion certificate:</p>
+        <div class="completion">
+            <input type="text" id="name" placeholder="Your Name">
+            <button onclick="generateCertificate()">Download Certificate</button>
         </div>
     </div>
-
-    <div id="module2-2" class="container hidden">
-        <h2>Module 2: Setting Up the App</h2>
-        <div class="instruction">
-            <strong>Step 1:</strong> Download and install a video calling app like Zoom or Skype from your app store.
-        </div>
-        <div class="instruction">
-            <strong>Step 2:</strong> Open the app and create an account using your email address.
-        </div>
-        <div class="nav-buttons">
-            <button onclick="showModule('module2-1')">Previous</button>
-            <button onclick="showModule('module2-3')">Next</button>
-        </div>
-    </div>
-
-    <div id="module2-3" class="container hidden">
-        <h2>Module 2: Practice Activity</h2>
-        <div class="instruction">
-            <strong>Practice Activity:</strong> Simulate joining a video call by clicking on the "Join Meeting" button below.
-        </div>
-        <div class="nav-buttons">
-            <button onclick="showModule('module2-2')">Previous</button>
-            <button onclick="showModule('module3-1')">Next Module</button>
-        </div>
-    </div>
-
-    <!-- Additional Modules (3 and 4) Follow Similar Structure -->
 
     <script>
         function showModule(moduleId) {
-            // Hide all modules
             const modules = document.querySelectorAll('.container');
             modules.forEach(module => module.classList.add('hidden'));
-
-            // Show the selected module
             const selectedModule = document.getElementById(moduleId);
             selectedModule.classList.remove('hidden');
+        }
+
+        function generateCertificate() {
+            const name = document.getElementById('name').value;
+            if (name) {
+                alert(`Congratulations, ${name}! Your certificate is being generated.`);
+            } else {
+                alert('Please enter your name.');
+            }
         }
     </script>
 </body>
