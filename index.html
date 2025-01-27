@@ -20,7 +20,6 @@
         }
         header h1 {
             margin: 0;
-            color: white;
         }
         .container {
             max-width: 900px;
@@ -105,93 +104,101 @@
         <ul class="module-list">
             <li>
                 <span>Module 1: Online Banking</span>
-                <button id="start-module1" onclick="startModule('module1-1')">Start</button>
+                <button id="start-module1" onclick="startModule('module1-slide1')">Start</button>
                 <span class="progress" id="progress-module1">0%</span>
             </li>
             <li>
                 <span>Module 2: Video Calling</span>
-                <button id="start-module2" onclick="startModule('module2-1')" disabled>Locked</button>
+                <button id="start-module2" onclick="startModule('module2-slide1')" disabled>Locked</button>
                 <span class="progress" id="progress-module2">Locked</span>
             </li>
             <li>
                 <span>Module 3: Social Media</span>
-                <button id="start-module3" onclick="startModule('module3-1')" disabled>Locked</button>
+                <button id="start-module3" onclick="startModule('module3-slide1')" disabled>Locked</button>
                 <span class="progress" id="progress-module3">Locked</span>
             </li>
             <li>
                 <span>Module 4: Cybersecurity</span>
-                <button id="start-module4" onclick="startModule('module4-1')" disabled>Locked</button>
+                <button id="start-module4" onclick="startModule('module4-slide1')" disabled>Locked</button>
                 <span class="progress" id="progress-module4">Locked</span>
             </li>
         </ul>
     </div>
 
-    <!-- Module 1: Online Banking -->
-    <div id="module1-1" class="container hidden">
-        <h2>Module 1: Online Banking - Introduction</h2>
-        <p>Learn to manage personal finances securely and efficiently.</p>
+    <!-- Module Content: Example for Module 1 -->
+    <div id="module1-slide1" class="container hidden">
+        <h2>Module 1: Online Banking - Overview</h2>
+        <p><strong>What is Online Banking?</strong> Online banking allows you to manage your finances through your bank's website or app without visiting a branch.</p>
         <div class="instruction">
-            <strong>Why Online Banking?</strong> Online banking allows you to save time and manage finances from the comfort of your home.
+            <strong>Key Benefits:</strong>
+            <ul>
+                <li>24/7 access to your account.</li>
+                <li>Pay bills and transfer funds quickly.</li>
+                <li>Track transactions and manage your budget.</li>
+            </ul>
         </div>
         <div class="nav-buttons">
             <button onclick="showHome()">Home</button>
-            <button onclick="startModule('module1-2')">Next</button>
+            <button onclick="startModule('module1-slide2')">Next</button>
         </div>
     </div>
-    <div id="module1-2" class="container hidden">
-        <h2>Module 1: How to Set Up Online Banking</h2>
+
+    <div id="module1-slide2" class="container hidden">
+        <h2>Module 1: Setting Up Online Banking</h2>
+        <p>Follow these steps to get started:</p>
         <div class="instruction">
             <strong>Step 1:</strong> Visit your bank's website or download their app.
         </div>
         <div class="instruction">
-            <strong>Step 2:</strong> Register by providing your account details.
+            <strong>Step 2:</strong> Register with your account information and create a secure password.
         </div>
         <div class="instruction">
-            <strong>Step 3:</strong> Create a secure password and follow the on-screen instructions.
+            <strong>Step 3:</strong> Set up security features such as two-factor authentication for added protection.
         </div>
         <div class="nav-buttons">
-            <button onclick="startModule('module1-1')">Previous</button>
+            <button onclick="startModule('module1-slide1')">Previous</button>
+            <button onclick="startModule('module1-slide3')">Next</button>
+        </div>
+    </div>
+
+    <div id="module1-slide3" class="container hidden">
+        <h2>Module 1: Practice Activity</h2>
+        <p>Practice logging in to an online banking platform.</p>
+        <div class="instruction">
+            <strong>Scenario:</strong> You need to log in to your bank's website.
+            <ul>
+                <li>Enter your username: <input type="text" placeholder="Username"></li>
+                <li>Enter your password: <input type="password" placeholder="Password"></li>
+                <li><button onclick="alert('Success! You have logged in.')">Log In</button></li>
+            </ul>
+        </div>
+        <div class="nav-buttons">
+            <button onclick="startModule('module1-slide2')">Previous</button>
             <button onclick="startModule('module1-quiz')">Quiz</button>
         </div>
     </div>
+
     <div id="module1-quiz" class="container hidden">
         <h2>Module 1: Quiz</h2>
         <div class="quiz-question">
             <p>What is the first step to setting up online banking?</p>
             <ul class="quiz-options">
                 <li><button onclick="alert('Incorrect! Start by visiting the bank website.')">Create a password</button></li>
-                <li><button onclick="alert('Correct! Visit the bank website or download their app.')">Visit the bank website</button></li>
+                <li><button onclick="recordCompletion('module1', 'module2')">Visit the bank website</button></li>
             </ul>
         </div>
         <div class="quiz-question">
             <p>Why is a secure password important?</p>
             <ul class="quiz-options">
                 <li><button onclick="alert('Correct! It helps protect your account.')">To protect your account</button></li>
-                <li><button onclick="alert('Incorrect! It is not just about following rules.')">To follow rules</button></li>
+                <li><button onclick="alert('Incorrect! Security is not about rules alone.')">To follow rules</button></li>
             </ul>
         </div>
         <div class="nav-buttons">
-            <button onclick="startModule('module1-2')">Previous</button>
-            <button onclick="completeModule('module1', 'module2')">Complete Module</button>
+            <button onclick="startModule('module1-slide3')">Previous</button>
         </div>
     </div>
 
-    <!-- Module 2: Video Calling -->
-    <div id="module2-1" class="container hidden">
-        <h2>Module 2: Video Calling - Introduction</h2>
-        <p>Learn to connect with friends, family, and professionals through video calls.</p>
-        <div class="instruction">
-            <strong>Why Video Calling?</strong> Stay connected with loved ones and participate in virtual meetings with ease.
-        </div>
-        <div class="nav-buttons">
-            <button onclick="showHome()">Home</button>
-            <button onclick="startModule('module2-2')">Next</button>
-        </div>
-    </div>
-
-    <!-- Additional Modules and Content Continue... -->
-
-    <!-- JavaScript for Navigation and Module Management -->
     <script>
         let moduleProgress = {
             module1: 0,
@@ -212,23 +219,12 @@
             document.getElementById('home').classList.remove('hidden');
         }
 
-        function completeModule(currentModule, nextModule) {
+        function recordCompletion(currentModule, nextModule) {
             moduleProgress[currentModule] = 100;
             document.getElementById(`progress-${currentModule}`).textContent = '100%';
-
-            if (nextModule) {
-                document.getElementById(`start-${nextModule}`).disabled = false;
-                document.getElementById(`progress-${nextModule}`).textContent = '0%';
-            }
-
-            alert(`${currentModule.replace('module', 'Module ')} completed!`);
-            showHome();
-        }
-
-        function completeCourse() {
-            moduleProgress.module4 = 100;
-            document.getElementById('progress-module4').textContent = '100%';
-            alert('Congratulations! You have completed the entire course!');
+            document.getElementById(`start-${nextModule}`).disabled = false;
+            document.getElementById(`progress-${nextModule}`).textContent = '0%';
+            alert(`Module ${currentModule.replace('module', '')} completed!`);
             showHome();
         }
     </script>
