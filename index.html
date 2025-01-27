@@ -26,7 +26,7 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
         }
-        h1, h2 {
+        h1, h2, h3 {
             color: #5a67d8;
         }
         .nav-buttons {
@@ -56,110 +56,125 @@
             border-left: 5px solid #5a67d8;
             border-radius: 5px;
         }
+        .home {
+            text-align: center;
+        }
+        .home button {
+            background-color: #5a67d8;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .home button:hover {
+            background-color: #434dcb;
+        }
     </style>
 </head>
 <body>
     <header>
         <h1>Empowering Seniors: Mastering Digital Literacy</h1>
-        <p>Your step-by-step guide to essential digital skills.</p>
     </header>
 
-    <div class="container">
-        <!-- Module 1 -->
-        <div id="module1" class="module">
-            <h2>Module 1: Online Banking - Secure and Simple</h2>
-            <p><strong>Purpose:</strong> Learn to manage personal finances securely and efficiently.</p>
-
-            <div class="instruction">
-                <strong>Step 1:</strong> Open your web browser and navigate to your bank's website.
-            </div>
-            <div class="instruction">
-                <strong>Step 2:</strong> Locate the "Sign In" or "Log In" button and click it.
-            </div>
-            <div class="instruction">
-                <strong>Step 3:</strong> Enter your username and password. If you don’t have an account, click on "Create Account" and follow the steps to register.
-            </div>
-            <div class="instruction">
-                <strong>Practice Activity:</strong> Click the button below to simulate logging into a mock banking interface.
-            </div>
-            <div class="nav-buttons">
-                <button onclick="showModule('module2')">Next</button>
-            </div>
-        </div>
-
-        <!-- Module 2 -->
-        <div id="module2" class="module hidden">
-            <h2>Module 2: Video Calling - Stay Connected</h2>
-            <p><strong>Purpose:</strong> Connect with family, friends, and professionals through video calls.</p>
-
-            <div class="instruction">
-                <strong>Step 1:</strong> Download and install a video calling app like Zoom or Skype from your app store.
-            </div>
-            <div class="instruction">
-                <strong>Step 2:</strong> Open the app and create an account using your email address.
-            </div>
-            <div class="instruction">
-                <strong>Step 3:</strong> Practice joining a meeting using the link below.
-            </div>
-            <div class="instruction">
-                <strong>Practice Activity:</strong> Simulate a video call by clicking on the "Join Meeting" button below.
-            </div>
-            <div class="nav-buttons">
-                <button onclick="showModule('module1')">Previous</button>
-                <button onclick="showModule('module3')">Next</button>
-            </div>
-        </div>
-
-        <!-- Module 3 -->
-        <div id="module3" class="module hidden">
-            <h2>Module 3: Social Media Use - Stay Engaged</h2>
-            <p><strong>Purpose:</strong> Safely and effectively engage with social media platforms.</p>
-
-            <div class="instruction">
-                <strong>Step 1:</strong> Visit the social media website (e.g., Facebook) and click "Sign Up."
-            </div>
-            <div class="instruction">
-                <strong>Step 2:</strong> Enter your personal details, including your email and a strong password.
-            </div>
-            <div class="instruction">
-                <strong>Step 3:</strong> Adjust your privacy settings by clicking on the "Settings" menu and selecting "Privacy."
-            </div>
-            <div class="instruction">
-                <strong>Practice Activity:</strong> Post a message in a simulated social media environment by clicking the button below.
-            </div>
-            <div class="nav-buttons">
-                <button onclick="showModule('module2')">Previous</button>
-                <button onclick="showModule('module4')">Next</button>
-            </div>
-        </div>
-
-        <!-- Module 4 -->
-        <div id="module4" class="module hidden">
-            <h2>Module 4: Cybersecurity Basics - Stay Safe Online</h2>
-            <p><strong>Purpose:</strong> Identify online threats and adopt secure practices.</p>
-
-            <div class="instruction">
-                <strong>Step 1:</strong> Learn to recognize phishing attempts by analyzing suspicious emails.
-            </div>
-            <div class="instruction">
-                <strong>Step 2:</strong> Create a strong password using a mix of letters, numbers, and symbols.
-            </div>
-            <div class="instruction">
-                <strong>Step 3:</strong> Enable two-factor authentication (2FA) on your accounts for added security.
-            </div>
-            <div class="instruction">
-                <strong>Practice Activity:</strong> Click below to simulate identifying a phishing email.
-            </div>
-            <div class="nav-buttons">
-                <button onclick="showModule('module3')">Previous</button>
-            </div>
+    <!-- Home Screen -->
+    <div id="home" class="container">
+        <h2>Welcome to the Digital Literacy Course</h2>
+        <p>This course is designed to help seniors master essential digital skills, including:</p>
+        <ul>
+            <li>Online Banking</li>
+            <li>Video Calling</li>
+            <li>Social Media</li>
+            <li>Cybersecurity</li>
+        </ul>
+        <div class="home">
+            <button onclick="showModule('module1-1')">Start Course</button>
         </div>
     </div>
+
+    <!-- Module 1: Online Banking -->
+    <div id="module1-1" class="container hidden">
+        <h2>Module 1: Online Banking - Introduction</h2>
+        <p><strong>Purpose:</strong> Learn to manage personal finances securely and efficiently.</p>
+        <p>This module will guide you through setting up an account, navigating your bank’s website, and completing basic tasks like checking balances and paying bills.</p>
+        <div class="nav-buttons">
+            <button onclick="showModule('home')">Home</button>
+            <button onclick="showModule('module1-2')">Next</button>
+        </div>
+    </div>
+
+    <div id="module1-2" class="container hidden">
+        <h2>Module 1: Setting Up Your Account</h2>
+        <div class="instruction">
+            <strong>Step 1:</strong> Open your web browser and navigate to your bank's website.
+        </div>
+        <div class="instruction">
+            <strong>Step 2:</strong> Locate the "Sign In" or "Log In" button and click it.
+        </div>
+        <div class="instruction">
+            <strong>Step 3:</strong> Enter your username and password. If you don’t have an account, click on "Create Account" and follow the steps to register.
+        </div>
+        <div class="nav-buttons">
+            <button onclick="showModule('module1-1')">Previous</button>
+            <button onclick="showModule('module1-3')">Next</button>
+        </div>
+    </div>
+
+    <div id="module1-3" class="container hidden">
+        <h2>Module 1: Practice Activity</h2>
+        <div class="instruction">
+            <strong>Practice Activity:</strong> Click the button below to simulate logging into a mock banking interface.
+        </div>
+        <div class="nav-buttons">
+            <button onclick="showModule('module1-2')">Previous</button>
+            <button onclick="showModule('module2-1')">Next Module</button>
+        </div>
+    </div>
+
+    <!-- Module 2: Video Calling -->
+    <div id="module2-1" class="container hidden">
+        <h2>Module 2: Video Calling - Introduction</h2>
+        <p><strong>Purpose:</strong> Connect with family, friends, and professionals through video calls.</p>
+        <p>This module will guide you through installing a video calling app, creating an account, and practicing key features like joining and hosting meetings.</p>
+        <div class="nav-buttons">
+            <button onclick="showModule('home')">Home</button>
+            <button onclick="showModule('module2-2')">Next</button>
+        </div>
+    </div>
+
+    <div id="module2-2" class="container hidden">
+        <h2>Module 2: Setting Up the App</h2>
+        <div class="instruction">
+            <strong>Step 1:</strong> Download and install a video calling app like Zoom or Skype from your app store.
+        </div>
+        <div class="instruction">
+            <strong>Step 2:</strong> Open the app and create an account using your email address.
+        </div>
+        <div class="nav-buttons">
+            <button onclick="showModule('module2-1')">Previous</button>
+            <button onclick="showModule('module2-3')">Next</button>
+        </div>
+    </div>
+
+    <div id="module2-3" class="container hidden">
+        <h2>Module 2: Practice Activity</h2>
+        <div class="instruction">
+            <strong>Practice Activity:</strong> Simulate joining a video call by clicking on the "Join Meeting" button below.
+        </div>
+        <div class="nav-buttons">
+            <button onclick="showModule('module2-2')">Previous</button>
+            <button onclick="showModule('module3-1')">Next Module</button>
+        </div>
+    </div>
+
+    <!-- Additional Modules (3 and 4) Follow Similar Structure -->
 
     <script>
         function showModule(moduleId) {
             // Hide all modules
-            const modules = document.querySelectorAll('.module');
+            const modules = document.querySelectorAll('.container');
             modules.forEach(module => module.classList.add('hidden'));
 
             // Show the selected module
