@@ -20,7 +20,6 @@
         }
         header h1 {
             margin: 0;
-            color: white;
         }
         .container {
             max-width: 900px;
@@ -210,10 +209,12 @@
         };
 
         function startModule(moduleId) {
+            console.log(`Attempting to open module: ${moduleId}`); // Debugging log
             const modules = document.querySelectorAll('.container');
             modules.forEach(module => module.classList.add('hidden'));
             const targetModule = document.getElementById(moduleId);
             if (targetModule) {
+                console.log(`Successfully opened module: ${moduleId}`); // Debugging log
                 targetModule.classList.remove('hidden');
             } else {
                 alert(`Error: Module content not found for ID "${moduleId}". Please check your setup.`);
@@ -221,12 +222,14 @@
         }
 
         function showHome() {
+            console.log('Returning to home screen.'); // Debugging log
             const modules = document.querySelectorAll('.container');
             modules.forEach(module => module.classList.add('hidden'));
             document.getElementById('home').classList.remove('hidden');
         }
 
         function recordCompletion(currentModule, nextModule) {
+            console.log(`Completing module: ${currentModule}, unlocking module: ${nextModule}`); // Debugging log
             moduleProgress[currentModule] = 100;
             document.getElementById(`progress-${currentModule}`).textContent = '100%';
             document.getElementById(`start-${nextModule}`).disabled = false;
