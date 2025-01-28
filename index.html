@@ -283,4 +283,28 @@
         };
 
         function startModule(moduleId) {
-            console.log(`Attempt
+            hideAllModules();
+            document.getElementById(moduleId).classList.remove('hidden');
+        }
+
+        function showHome() {
+            hideAllModules();
+            document.getElementById('home').classList.remove('hidden');
+        }
+
+        function hideAllModules() {
+            const modules = document.querySelectorAll('.container');
+            modules.forEach(module => module.classList.add('hidden'));
+        }
+
+        function recordCompletion(currentModule, nextModule) {
+            moduleProgress[currentModule] = 100;
+            document.getElementById(`progress-${currentModule}`).textContent = '100%';
+            document.getElementById(`start-${nextModule}`).disabled = false;
+            document.getElementById(`progress-${nextModule}`).textContent = '0%';
+            alert('Module completed successfully!');
+            showHome();
+        }
+    </script>
+</body>
+</html>
