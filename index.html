@@ -195,7 +195,27 @@
                 <li><button onclick="checkAnswer('module1', 2, false)">To follow rules</button></li>
             </ul>
         </div>
-        <!-- Add more questions here up to 5 -->
+        <div class="quiz-question">
+            <p>What is two-factor authentication?</p>
+            <ul class="quiz-options">
+                <li><button onclick="checkAnswer('module1', 3, true)">An extra layer of security</button></li>
+                <li><button onclick="checkAnswer('module1', 3, false)">A type of bank account</button></li>
+            </ul>
+        </div>
+        <div class="quiz-question">
+            <p>Can online banking help manage your budget?</p>
+            <ul class="quiz-options">
+                <li><button onclick="checkAnswer('module1', 4, true)">Yes</button></li>
+                <li><button onclick="checkAnswer('module1', 4, false)">No</button></li>
+            </ul>
+        </div>
+        <div class="quiz-question">
+            <p>What should you do if you forget your online banking password?</p>
+            <ul class="quiz-options">
+                <li><button onclick="checkAnswer('module1', 5, true)">Use the password recovery option</button></li>
+                <li><button onclick="checkAnswer('module1', 5, false)">Create a new account</button></li>
+            </ul>
+        </div>
         <div class="nav-buttons">
             <button onclick="startModule('module1-slide3')">Previous</button>
         </div>
@@ -270,7 +290,27 @@
                 <li><button onclick="checkAnswer('module2', 2, false)">To type messages</button></li>
             </ul>
         </div>
-        <!-- Add more questions here up to 5 -->
+        <div class="quiz-question">
+            <p>What is the benefit of using video calling for meetings?</p>
+            <ul class="quiz-options">
+                <li><button onclick="checkAnswer('module2', 3, true)">Saves time and travel costs</button></li>
+                <li><button onclick="checkAnswer('module2', 3, false)">Requires physical presence</button></li>
+            </ul>
+        </div>
+        <div class="quiz-question">
+            <p>Can you use video calling to stay connected with loved ones?</p>
+            <ul class="quiz-options">
+                <li><button onclick="checkAnswer('module2', 4, true)">Yes</button></li>
+                <li><button onclick="checkAnswer('module2', 4, false)">No</button></li>
+            </ul>
+        </div>
+        <div class="quiz-question">
+            <p>What should you do if you encounter technical issues during a video call?</p>
+            <ul class="quiz-options">
+                <li><button onclick="checkAnswer('module2', 5, true)">Check your internet connection</button></li>
+                <li><button onclick="checkAnswer('module2', 5, false)">Ignore the issues</button></li>
+            </ul>
+        </div>
         <div class="nav-buttons">
             <button onclick="startModule('module2-slide3')">Previous</button>
         </div>
@@ -344,55 +384,7 @@
                 <li><button onclick="checkAnswer('module3', 2, false)">To follow rules</button></li>
             </ul>
         </div>
-        <!-- Add more questions here up to 5 -->
-        <div class="nav-buttons">
-            <button onclick="startModule('module3-slide3')">Previous</button>
-        </div>
-    </div>
-
-    <script>
-        let moduleProgress = {
-            module1: 0,
-            module2: 0,
-            module3: 0,
-            module4: 0
-        };
-
-        function startModule(moduleId) {
-            hideAllModules();
-            document.getElementById(moduleId).classList.remove('hidden');
-        }
-
-        function showHome() {
-            hideAllModules();
-            document.getElementById('home').classList.remove('hidden');
-        }
-
-        function hideAllModules() {
-            const modules = document.querySelectorAll('.container');
-            modules.forEach(module => module.classList.add('hidden'));
-        }
-
-        function recordCompletion(currentModule, nextModule) {
-            moduleProgress[currentModule] = 100;
-            document.getElementById(`progress-${currentModule}`).textContent = '100%';
-            document.getElementById(`start-${nextModule}`).disabled = false;
-            document.getElementById(`progress-${nextModule}`).textContent = '0%';
-            alert('Module completed successfully!');
-            showHome();
-        }
-
-        function checkAnswer(module, question, isCorrect) {
-            if (isCorrect) {
-                moduleProgress[module] += 1;
-            } else {
-                alert('Incorrect answer. Please try again.');
-            }
-
-            if (moduleProgress[module] === 5) {
-                recordCompletion(module, `module${parseInt(module.slice(-1)) + 1}`);
-            }
-        }
-    </script>
-</body>
-</html>
+        <div class="quiz-question">
+            <p>How can you stay updated with news on social media?</p>
+            <ul class="quiz-options">
+                <li><button onclick="checkAnswer('module
