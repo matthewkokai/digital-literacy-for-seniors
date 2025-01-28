@@ -20,6 +20,7 @@
         }
         header h1 {
             margin: 0;
+            color: white;
         }
         .container {
             max-width: 900px;
@@ -199,7 +200,80 @@
         </div>
     </div>
 
-    <!-- JavaScript Functions -->
+    <!-- Module 2 Content -->
+    <div id="module2-slide1" class="container hidden">
+        <h2>Module 2: Video Calling - Overview</h2>
+        <p><strong>What is Video Calling?</strong> Video calling allows you to connect with friends, family, and colleagues visually and audibly over the internet.</p>
+        <div class="instruction">
+            <strong>Why Use Video Calling?</strong>
+            <ul>
+                <li>Stay connected with loved ones regardless of distance.</li>
+                <li>Participate in virtual meetings from the comfort of your home.</li>
+                <li>Save time and costs associated with travel.</li>
+            </ul>
+        </div>
+        <div class="nav-buttons">
+            <button onclick="showHome()">Home</button>
+            <button onclick="startModule('module2-slide2')">Next</button>
+        </div>
+    </div>
+
+    <div id="module2-slide2" class="container hidden">
+        <h2>Module 2: Setting Up Video Calls</h2>
+        <p>Follow these steps to set up a video call:</p>
+        <div class="instruction">
+            <strong>Step 1:</strong> Download a video calling app such as Zoom or Skype.
+        </div>
+        <div class="instruction">
+            <strong>Step 2:</strong> Create an account or sign in with existing credentials.
+        </div>
+        <div class="instruction">
+            <strong>Step 3:</strong> Schedule or start a new meeting and invite participants.
+        </div>
+        <div class="nav-buttons">
+            <button onclick="startModule('module2-slide1')">Previous</button>
+            <button onclick="startModule('module2-slide3')">Next</button>
+        </div>
+    </div>
+
+    <div id="module2-slide3" class="container hidden">
+        <h2>Module 2: Practice Activity</h2>
+        <p>Practice starting a video call:</p>
+        <div class="instruction">
+            <strong>Scenario:</strong> Open a video call app and schedule a meeting with three participants.
+        </div>
+        <ul>
+            <li>Enter meeting name: <input type="text" placeholder="Meeting Name"></li>
+            <li>Select time and date: <input type="datetime-local"></li>
+            <li><button onclick="alert('Meeting scheduled successfully!')">Schedule Meeting</button></li>
+        </ul>
+        <div class="nav-buttons">
+            <button onclick="startModule('module2-slide2')">Previous</button>
+            <button onclick="startModule('module2-quiz')">Quiz</button>
+        </div>
+    </div>
+
+    <div id="module2-quiz" class="container hidden">
+        <h2>Module 2: Quiz</h2>
+        <div class="quiz-question">
+            <p>What is the first step in setting up a video call?</p>
+            <ul class="quiz-options">
+                <li><button onclick="alert('Incorrect! You need to download an app.')">Create an account</button></li>
+                <li><button onclick="recordCompletion('module2', 'module3')">Download a video call app</button></li>
+            </ul>
+        </div>
+        <div class="quiz-question">
+            <p>Why is video calling useful?</p>
+            <ul class="quiz-options">
+                <li><button onclick="alert('Correct! It allows visual and audio connection.')">To connect visually and audibly</button></li>
+                <li><button onclick="alert('Incorrect! Video calling is not just for typing.')">To type messages</button></li>
+            </ul>
+        </div>
+        <div class="nav-buttons">
+            <button onclick="startModule('module2-slide3')">Previous</button>
+        </div>
+    </div>
+
     <script>
         let moduleProgress = {
             module1: 0,
@@ -209,34 +283,4 @@
         };
 
         function startModule(moduleId) {
-            console.log(`Attempting to open module: ${moduleId}`); // Debugging log
-            const modules = document.querySelectorAll('.container');
-            modules.forEach(module => module.classList.add('hidden'));
-            const targetModule = document.getElementById(moduleId);
-            if (targetModule) {
-                console.log(`Successfully opened module: ${moduleId}`); // Debugging log
-                targetModule.classList.remove('hidden');
-            } else {
-                alert(`Error: Module content not found for ID "${moduleId}". Please check your setup.`);
-            }
-        }
-
-        function showHome() {
-            console.log('Returning to home screen.'); // Debugging log
-            const modules = document.querySelectorAll('.container');
-            modules.forEach(module => module.classList.add('hidden'));
-            document.getElementById('home').classList.remove('hidden');
-        }
-
-        function recordCompletion(currentModule, nextModule) {
-            console.log(`Completing module: ${currentModule}, unlocking module: ${nextModule}`); // Debugging log
-            moduleProgress[currentModule] = 100;
-            document.getElementById(`progress-${currentModule}`).textContent = '100%';
-            document.getElementById(`start-${nextModule}`).disabled = false;
-            document.getElementById(`progress-${nextModule}`).textContent = '0%';
-            alert(`Module ${currentModule.replace('module', '')} completed!`);
-            showHome();
-        }
-    </script>
-</body>
-</html>
+            console.log(`Attempt
