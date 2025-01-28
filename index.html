@@ -184,17 +184,18 @@
         <div class="quiz-question">
             <p>What is the first step to setting up online banking?</p>
             <ul class="quiz-options">
-                <li><button onclick="alert('Incorrect! Start by visiting the bank website.')">Create a password</button></li>
-                <li><button onclick="recordCompletion('module1', 'module2')">Visit the bank website</button></li>
+                <li><button onclick="checkAnswer('module1', 1, false)">Create a password</button></li>
+                <li><button onclick="checkAnswer('module1', 1, true)">Visit the bank website</button></li>
             </ul>
         </div>
         <div class="quiz-question">
             <p>Why is a secure password important?</p>
             <ul class="quiz-options">
-                <li><button onclick="alert('Correct! It helps protect your account.')">To protect your account</button></li>
-                <li><button onclick="alert('Incorrect! Security is not about rules alone.')">To follow rules</button></li>
+                <li><button onclick="checkAnswer('module1', 2, true)">To protect your account</button></li>
+                <li><button onclick="checkAnswer('module1', 2, false)">To follow rules</button></li>
             </ul>
         </div>
+        <!-- Add more questions here up to 5 -->
         <div class="nav-buttons">
             <button onclick="startModule('module1-slide3')">Previous</button>
         </div>
@@ -258,19 +259,94 @@
         <div class="quiz-question">
             <p>What is the first step in setting up a video call?</p>
             <ul class="quiz-options">
-                <li><button onclick="alert('Incorrect! You need to download an app.')">Create an account</button></li>
-                <li><button onclick="recordCompletion('module2', 'module3')">Download a video call app</button></li>
+                <li><button onclick="checkAnswer('module2', 1, false)">Create an account</button></li>
+                <li><button onclick="checkAnswer('module2', 1, true)">Download a video call app</button></li>
             </ul>
         </div>
         <div class="quiz-question">
             <p>Why is video calling useful?</p>
             <ul class="quiz-options">
-                <li><button onclick="alert('Correct! It allows visual and audio connection.')">To connect visually and audibly</button></li>
-                <li><button onclick="alert('Incorrect! Video calling is not just for typing.')">To type messages</button></li>
+                <li><button onclick="checkAnswer('module2', 2, true)">To connect visually and audibly</button></li>
+                <li><button onclick="checkAnswer('module2', 2, false)">To type messages</button></li>
+            </ul>
+        </div>
+        <!-- Add more questions here up to 5 -->
+        <div class="nav-buttons">
+            <button onclick="startModule('module2-slide3')">Previous</button>
+        </div>
+    </div>
+
+    <!-- Module 3 Content -->
+    <div id="module3-slide1" class="container hidden">
+        <h2>Module 3: Social Media - Overview</h2>
+        <p><strong>What is Social Media?</strong> Social media platforms allow you to connect with friends, family, and communities online.</p>
+        <div class="instruction">
+            <strong>Why Use Social Media?</strong>
+            <ul>
+                <li>Stay updated with news and trends.</li>
+                <li>Connect with like-minded individuals.</li>
+                <li>Share your thoughts and experiences.</li>
             </ul>
         </div>
         <div class="nav-buttons">
-            <button onclick="startModule('module2-slide3')">Previous</button>
+            <button onclick="showHome()">Home</button>
+            <button onclick="startModule('module3-slide2')">Next</button>
+        </div>
+    </div>
+
+    <div id="module3-slide2" class="container hidden">
+        <h2>Module 3: Creating a Social Media Account</h2>
+        <p>Follow these steps to create a social media account:</p>
+        <div class="instruction">
+            <strong>Step 1:</strong> Choose a social media platform like Facebook or Twitter.
+        </div>
+        <div class="instruction">
+            <strong>Step 2:</strong> Register with your email address and create a secure password.
+        </div>
+        <div class="instruction">
+            <strong>Step 3:</strong> Complete your profile with your personal information.
+        </div>
+        <div class="nav-buttons">
+            <button onclick="startModule('module3-slide1')">Previous</button>
+            <button onclick="startModule('module3-slide3')">Next</button>
+        </div>
+    </div>
+
+    <div id="module3-slide3" class="container hidden">
+        <h2>Module 3: Practice Activity</h2>
+        <p>Practice creating a social media post:</p>
+        <div class="instruction">
+            <strong>Scenario:</strong> You need to create a new post on your social media account.
+            <ul>
+                <li>Enter post content: <input type="text" placeholder="What's on your mind?"></li>
+                <li><button onclick="alert('Post created successfully!')">Post</button></li>
+            </ul>
+        </div>
+        <div class="nav-buttons">
+            <button onclick="startModule('module3-slide2')">Previous</button>
+            <button onclick="startModule('module3-quiz')">Quiz</button>
+        </div>
+    </div>
+
+    <div id="module3-quiz" class="container hidden">
+        <h2>Module 3: Quiz</h2>
+        <div class="quiz-question">
+            <p>What is the first step to creating a social media account?</p>
+            <ul class="quiz-options">
+                <li><button onclick="checkAnswer('module3', 1, false)">Complete your profile</button></li>
+                <li><button onclick="checkAnswer('module3', 1, true)">Choose a social media platform</button></li>
+            </ul>
+        </div>
+        <div class="quiz-question">
+            <p>Why is it important to create a secure password?</p>
+            <ul class="quiz-options">
+                <li><button onclick="checkAnswer('module3', 2, true)">To protect your account</button></li>
+                <li><button onclick="checkAnswer('module3', 2, false)">To follow rules</button></li>
+            </ul>
+        </div>
+        <!-- Add more questions here up to 5 -->
+        <div class="nav-buttons">
+            <button onclick="startModule('module3-slide3')">Previous</button>
         </div>
     </div>
 
@@ -304,6 +380,18 @@
             document.getElementById(`progress-${nextModule}`).textContent = '0%';
             alert('Module completed successfully!');
             showHome();
+        }
+
+        function checkAnswer(module, question, isCorrect) {
+            if (isCorrect) {
+                moduleProgress[module] += 1;
+            } else {
+                alert('Incorrect answer. Please try again.');
+            }
+
+            if (moduleProgress[module] === 5) {
+                recordCompletion(module, `module${parseInt(module.slice(-1)) + 1}`);
+            }
         }
     </script>
 </body>
